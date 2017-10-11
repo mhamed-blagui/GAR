@@ -3,6 +3,6 @@ server:
 spring:
     datasource:
         driverClassName: org.postgresql.Driver
-        password: ENC()
+        password: ENC(CzTn7iBUz3XtxUUhl1XfgvsppOzn9TK2)
         url: jdbc:postgresql://localhost:5432/postgres
         username: insurance
