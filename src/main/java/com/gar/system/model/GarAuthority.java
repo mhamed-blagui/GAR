@@ -1,7 +1,6 @@
 package com.gar.system.model;
 
 import static com.gar.system.constants.GarConstants.GAR_AUTHORITY_TABLE_NAME;
-import static org.hibernate.annotations.CacheConcurrencyStrategy.NONSTRICT_READ_WRITE;
 
 import java.io.Serializable;
 
@@ -15,14 +14,11 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.hibernate.annotations.Cache;
-
 /**
  * An authority (a security role) used by Spring Security.
  */
 @Entity
 @Table(name = GAR_AUTHORITY_TABLE_NAME)
-@Cache(usage = NONSTRICT_READ_WRITE)
 @Getter
 @Setter
 public class GarAuthority implements Serializable {

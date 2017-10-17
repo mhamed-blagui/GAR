@@ -22,4 +22,15 @@ public class GarConstants {
 
 	public static final String SYSTEM_ACCOUNT = "system";
 	public static final String ANONYMOUS_USER = "anonymoususer";
+	public static final String CHECK_ERROR_MESSAGE = "Incorrect password";
+	
+    public static final int PASSWORD_MIN_LENGTH = 4;
+    public static final int PASSWORD_MAX_LENGTH = 100;
+    
+    public static final String ADMIN = "ROLE_ADMIN";
+    public static final String USER = "ROLE_USER";
+    public static final String ANONYMOUS = "ROLE_ANONYMOUS";
+    
+
+    public static final String APPLICATION_NAME = "garApp";
 }

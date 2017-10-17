@@ -2,7 +2,6 @@ package com.gar.system.model;
 
 import static com.gar.system.constants.GarConstants.GAR_USER_TABLE_NAME;
 import static com.gar.system.constants.GarConstants.LOGIN_REGEX;
-import static org.hibernate.annotations.CacheConcurrencyStrategy.NONSTRICT_READ_WRITE;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -28,8 +27,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,7 +36,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = GAR_USER_TABLE_NAME)
-@Cache(usage = NONSTRICT_READ_WRITE)
 @Getter
 @Setter
 public class GarUser extends AbstractAuditingEntity implements Serializable {
@@ -104,7 +100,6 @@ public class GarUser extends AbstractAuditingEntity implements Serializable {
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "GAR_USER_AUTHORITY", joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "authority_name", referencedColumnName = "name") })
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	@BatchSize(size = 20)
 	private Set<GarAuthority> authorities = new HashSet<>();
 
