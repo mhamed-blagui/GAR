@@ -29,6 +29,8 @@
 		<jasypt.version>1.14</jasypt.version>
 		<dropwizard-metrics.version>3.2.2</dropwizard-metrics.version>
 		<jcache.version>1.0.0</jcache.version>
+		<springfox.version>2.7.0</springfox.version>
+		<jhipster.server.version>1.1.9</jhipster.server.version>
 	</properties>
 
 	<dependencies>
@@ -190,11 +192,11 @@
 			<artifactId>metrics-jcache</artifactId>
 			<version>${dropwizard-metrics.version}</version>
 		</dependency>
-		 <dependency>
-            <groupId>io.dropwizard.metrics</groupId>
-            <artifactId>metrics-annotation</artifactId>
-            <version>${dropwizard-metrics.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>io.dropwizard.metrics</groupId>
+			<artifactId>metrics-annotation</artifactId>
+			<version>${dropwizard-metrics.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.cache</groupId>
 			<artifactId>cache-api</artifactId>
@@ -202,6 +204,22 @@
 		<dependency>
 			<groupId>org.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mapstruct</groupId>
+					<artifactId>mapstruct</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jhipster</groupId>
+			<artifactId>jhipster</artifactId>
+			<version>${jhipster.server.version}</version>
 		</dependency>
 	</dependencies>
 

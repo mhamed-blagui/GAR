@@ -8,4 +8,6 @@ public interface GarMailService {
 
 	void sendPasswordResetMail(GarUser user);
 
+	void sendCreationEmail(GarUser newUser);
+
 }
