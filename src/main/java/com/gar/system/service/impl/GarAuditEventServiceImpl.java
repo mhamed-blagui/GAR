@@ -3,30 +3,36 @@ package com.gar.system.service.impl;
 import java.time.Instant;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.gar.system.repository.PersistenceAuditEventRepository;
+import com.gar.system.service.GarAuditEventConverterService;
 import com.gar.system.service.GarAuditEventService;
 
 public class GarAuditEventServiceImpl implements GarAuditEventService {
 
-	@Override
-	public Page<AuditEvent> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Autowired
+	private PersistenceAuditEventRepository persistenceAuditEventRepository;
 
-	@Override
-	public Page<AuditEvent> findByDates(Instant instant, Instant instant2, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Autowired
+    private GarAuditEventConverterService auditEventConverter;
 
-	@Override
-	public Optional<AuditEvent> find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Page<AuditEvent> findAll(Pageable pageable) {
+        return persistenceAuditEventRepository.findAll(pageable)
+            .map(auditEventConverter::convertToAuditEvent);
+    }
+
+    public Page<AuditEvent> findByDates(Instant fromDate, Instant toDate, Pageable pageable) {
+        return persistenceAuditEventRepository.findAllByAuditEventDateBetween(fromDate, toDate, pageable)
+            .map(auditEventConverter::convertToAuditEvent);
+    }
+
+    public Optional<AuditEvent> find(Long id) {
+        return Optional.ofNullable(persistenceAuditEventRepository.findOne(id)).map
+            (auditEventConverter::convertToAuditEvent);
+    }
 
 }
